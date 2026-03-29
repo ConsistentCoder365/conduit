@@ -1,0 +1,4 @@
+io.conduit.source.SyntheticSource$Provider
+io.conduit.source.FileTailSource$Provider
+io.conduit.source.TcpSyslogSource$Provider
+io.conduit.source.HttpBatchSource$Provider
