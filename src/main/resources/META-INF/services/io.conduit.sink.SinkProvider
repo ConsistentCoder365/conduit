@@ -1,0 +1,5 @@
+io.conduit.sink.FileSink$Provider
+io.conduit.sink.PostgresSink$Provider
+io.conduit.sink.Neo4jSink$Provider
+io.conduit.sink.BlackholeSink$Provider
+io.conduit.sink.FaultSink$Provider
