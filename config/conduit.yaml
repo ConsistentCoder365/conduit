@@ -1,0 +1,89 @@
+# The full pipeline: four concurrent sources, filter, three transforms, fan-out routing,
+# PostgreSQL + Neo4j + rolling-file sinks. Hostnames default to localhost and are overridden by
+# docker-compose.yml through environment variables.
+pipeline:
+  workers: ${CONDUIT_WORKERS:-4}
+  queueCapacity: 8192
+  shutdownTimeout: 30s
+
+metrics:
+  port: 9400
+
+deadLetter:
+  dir: ${CONDUIT_OUT:-out}/dead-letter
+
+sources:
+  - name: synth
+    type: synthetic
+    rate: ${CONDUIT_SYNTH_RATE:-500}
+    malformedRate: 0.001
+
+  - name: auth-file
+    type: file
+    path: config/sample-auth.jsonl
+    keyField: user
+
+  - name: syslog
+    type: tcp
+    port: 5140
+
+  - name: http
+    type: http
+    port: 8088
+    keyField: user
+
+filter:
+  drop:
+    or:
+      - type: heartbeat
+      - and: [ { type: network }, { severity: INFO }, { field: { name: action, eq: allow } } ]
+
+transforms:
+  - type: timestamp
+    maxFutureSkew: 5m
+  - type: redact
+    fields: [email]
+    detectEmails: true
+    mode: hash
+    salt: ${CONDUIT_REDACT_SALT:-change-me-in-production}
+  - type: enrich-ip
+    fields: [src_ip, dst_ip]
+    table: config/ip-table.csv
+    reloadInterval: 10s
+
+routes:
+  policy: all-matching
+  rules:
+    - name: identity-graph
+      when: { type: auth }
+      to: [graph, postgres]
+    - name: high-severity
+      when: { severity: { gte: HIGH } }
+      to: [postgres]
+  default: [archive]
+
+sinks:
+  - name: postgres
+    type: postgres
+    url: jdbc:postgresql://${PGHOST:-localhost}:5432/conduit
+    user: conduit
+    password: ${PGPASSWORD:-conduit-pass}
+    workers: 2
+    batchSize: 500
+    linger: 50ms
+    retry: { maxAttempts: 5, initialBackoff: 100ms, maxBackoff: 5s }
+    circuitBreaker: { failureThreshold: 3, openFor: 10s }
+
+  - name: graph
+    type: neo4j
+    uri: bolt://${NEO4J_HOST:-localhost}:7687
+    password: ${NEO4J_PASSWORD:-conduit-pass}
+    batchSize: 250
+    linger: 100ms
+    writeTimeout: 10s
+
+  - name: archive
+    type: file
+    dir: ${CONDUIT_OUT:-out}/archive
+    maxFileBytes: 128MB
+    rollEvery: 1h

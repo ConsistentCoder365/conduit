@@ -1,0 +1,7 @@
+{"type":"auth","timestamp":"2026-10-25T09:15:02-04:00","user":"alice","email":"alice@contoso.com","src_ip":"185.220.101.7","host":"vpn-gw-1","outcome":"failure","severity":"high"}
+{"type":"auth","timestamp":"2026-10-25T13:15:09Z","user":"alice","email":"alice@contoso.com","src_ip":"10.0.4.22","host":"vpn-gw-1","outcome":"success"}
+{"type":"auth","ts":1793020000,"user":"bob","src_ip":"52.14.9.1","host":"bastion-2","outcome":"success","severity":"info"}
+{"type":"process","user":"svc-backup","host":"db-1","process":"pg_dump","cmdline":"pg_dump --notify ops@contoso.com","severity":"low"}
+{"type":"network","src_ip":"10.0.9.9","dst_ip":"20.42.1.1","dst_port":443,"action":"allow","severity":"low"}
+{"user":"mallory","note":"missing type, goes to dead-letter"}
+this line is not json

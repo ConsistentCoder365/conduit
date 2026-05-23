@@ -1,0 +1,11 @@
+cidr,zone,country,asn,org
+10.0.0.0/8,internal,,,
+10.0.0.0/16,internal-datacenter,,,
+172.16.0.0/12,internal,,,
+192.168.0.0/16,internal,,,
+13.64.0.0/11,external,US,8075,Microsoft
+20.0.0.0/8,external,US,8075,Microsoft
+34.0.0.0/8,external,US,15169,Google
+52.0.0.0/8,external,US,16509,Amazon
+185.220.100.0/22,external-tor,DE,,Tor exit
+0.0.0.0/0,external,,,

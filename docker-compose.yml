@@ -1,0 +1,38 @@
+# docker compose up --build     then: curl localhost:9400/health
+# Neo4j browser: http://localhost:7474 (neo4j / conduit-pass)
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: conduit
+      POSTGRES_PASSWORD: conduit-pass
+      POSTGRES_DB: conduit
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U conduit -d conduit"]
+      interval: 2s
+      retries: 30
+
+  neo4j:
+    image: neo4j:5-community
+    environment:
+      NEO4J_AUTH: neo4j/conduit-pass
+      NEO4J_server_memory_heap_max__size: 512m
+    ports: ["7474:7474", "7687:7687"]
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p conduit-pass 'RETURN 1' || exit 1"]
+      interval: 3s
+      retries: 40
+
+  conduit:
+    build: .
+    depends_on:
+      postgres: { condition: service_healthy }
+      neo4j: { condition: service_healthy }
+    environment:
+      PGHOST: postgres
+      NEO4J_HOST: neo4j
+      CONDUIT_SYNTH_RATE: "${CONDUIT_SYNTH_RATE:-500}"
+    ports: ["9400:9400", "5140:5140", "8088:8088"]
+    volumes: ["./out:/app/out"]
+    stop_grace_period: 45s

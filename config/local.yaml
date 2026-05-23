@@ -1,0 +1,79 @@
+# Runs anywhere with no databases: all four sources, the full transform chain, file sinks.
+#   ./gradlew installDist && build/install/conduit/bin/conduit config/local.yaml
+pipeline:
+  workers: 4
+  queueCapacity: 8192
+  shutdownTimeout: 30s
+
+metrics:
+  port: 9400
+
+deadLetter:
+  dir: out/dead-letter
+
+sources:
+  - name: synth
+    type: synthetic
+    rate: 2000
+    malformedRate: 0.001
+
+  - name: auth-file
+    type: file
+    path: config/sample-auth.jsonl
+    keyField: user
+
+  - name: syslog
+    type: tcp
+    port: 5140
+
+  - name: http
+    type: http
+    port: 8088
+    keyField: user
+
+filter:
+  drop:
+    or:
+      - type: heartbeat
+      - and:
+          - type: network
+          - severity: { lt: LOW }
+
+transforms:
+  - type: timestamp
+    maxFutureSkew: 5m
+  - type: redact
+    fields: [email]
+    detectEmails: true
+    mode: hash
+    salt: ${CONDUIT_REDACT_SALT:-local-dev-salt}
+  - type: enrich-ip
+    fields: [src_ip, dst_ip]
+    table: config/ip-table.csv
+    reloadInterval: 5s
+
+routes:
+  policy: all-matching
+  rules:
+    - name: alerts
+      when: { severity: { gte: HIGH } }
+      to: [alerts]
+    - name: auth
+      when: { type: auth }
+      to: [auth]
+  default: [archive]
+
+sinks:
+  - name: archive
+    type: file
+    dir: out/archive
+    maxFileBytes: 64MB
+    workers: 2
+
+  - name: auth
+    type: file
+    dir: out/auth
+
+  - name: alerts
+    type: file
+    dir: out/alerts
