@@ -1,0 +1,6 @@
+{
+  "eventsPerSec" : 300000,
+  "maxDrop" : 0.5,
+  "machine" : "GitHub-hosted ubuntu-latest runner (conservative seed; replace with a measured CI value via: ./gradlew benchSmoke -PbenchArgs=\"smoke --baseline bench/baseline-ci.json --update-baseline\")",
+  "recorded" : "2026-10-25"
+}
