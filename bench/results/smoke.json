@@ -1,0 +1,13 @@
+{
+  "scenario" : "smoke",
+  "machine" : {
+    "cpu" : "Apple M1",
+    "cores" : 8,
+    "memoryGb" : 8,
+    "os" : "Mac OS X 26.1 aarch64",
+    "java" : "OpenJDK 64-Bit Server VM 21.0.13",
+    "maxHeapMb" : 1024
+  },
+  "eventsPerSec" : 700249.2799905606,
+  "at" : "2026-10-25T09:11:40.985951Z"
+}

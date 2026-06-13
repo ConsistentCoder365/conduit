@@ -1,0 +1,29 @@
+{
+  "scenario" : "loss",
+  "machine" : {
+    "cpu" : "Apple M1",
+    "cores" : 8,
+    "memoryGb" : 8,
+    "os" : "Mac OS X 26.1 aarch64",
+    "java" : "OpenJDK 64-Bit Server VM 21.0.13",
+    "maxHeapMb" : 1024
+  },
+  "events" : 10000000,
+  "seconds" : 14.173468208,
+  "accounting" : {
+    "ingested" : 10000000,
+    "rejected_backpressure" : 0,
+    "filtered" : 0,
+    "routed" : 9995006,
+    "deliveries" : 19990012,
+    "published" : 19631755,
+    "dead_lettered_parse" : 4994,
+    "dead_lettered_transform" : 0,
+    "dead_lettered_sink_overflow" : 0,
+    "dead_lettered_sink_write" : 358257,
+    "dead_letter_records_written" : 363251
+  },
+  "deadLetterFileLines" : 363251,
+  "invariantHolds" : true,
+  "filesMatchCounters" : true
+}

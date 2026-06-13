@@ -1,0 +1,159 @@
+{
+  "scenario" : "isolation",
+  "machine" : {
+    "cpu" : "Apple M1",
+    "cores" : 8,
+    "memoryGb" : 8,
+    "os" : "Mac OS X 26.1 aarch64",
+    "java" : "OpenJDK 64-Bit Server VM 21.0.13",
+    "maxHeapMb" : 1024
+  },
+  "rate" : 200000.0,
+  "healthyPerSecBefore" : 201665.5,
+  "healthyPerSecDuringOutage" : 191908.9090909091,
+  "healthyPerSecAfter" : 218678.5,
+  "duringVsBefore" : 0.9516199304834445,
+  "samples" : [ {
+    "t" : 0.5,
+    "healthyPerSec" : 201460.0,
+    "failingPerSec" : 202000.0
+  }, {
+    "t" : 1.0,
+    "healthyPerSec" : 199248.0,
+    "failingPerSec" : 200000.0
+  }, {
+    "t" : 1.5,
+    "healthyPerSec" : 202380.0,
+    "failingPerSec" : 202000.0
+  }, {
+    "t" : 2.0,
+    "healthyPerSec" : 199286.0,
+    "failingPerSec" : 200000.0
+  }, {
+    "t" : 2.5,
+    "healthyPerSec" : 201660.0,
+    "failingPerSec" : 202000.0
+  }, {
+    "t" : 3.0,
+    "healthyPerSec" : 199696.0,
+    "failingPerSec" : 198896.0
+  }, {
+    "t" : 3.5,
+    "healthyPerSec" : 200632.0,
+    "failingPerSec" : 202000.0
+  }, {
+    "t" : 4.0,
+    "healthyPerSec" : 193418.0,
+    "failingPerSec" : 198000.0
+  }, {
+    "t" : 4.5,
+    "healthyPerSec" : 217004.0,
+    "failingPerSec" : 212092.0
+  }, {
+    "t" : 5.1,
+    "healthyPerSec" : 202596.0,
+    "failingPerSec" : 182000.0
+  }, {
+    "t" : 5.6,
+    "healthyPerSec" : 69638.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 6.1,
+    "healthyPerSec" : 129024.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 6.6,
+    "healthyPerSec" : 38818.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 7.1,
+    "healthyPerSec" : 222956.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 7.6,
+    "healthyPerSec" : 208506.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 8.1,
+    "healthyPerSec" : 256822.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 8.6,
+    "healthyPerSec" : 268402.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 9.1,
+    "healthyPerSec" : 260898.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 9.6,
+    "healthyPerSec" : 248984.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 10.1,
+    "healthyPerSec" : 218294.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 10.6,
+    "healthyPerSec" : 188656.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 11.1,
+    "healthyPerSec" : 169270.0,
+    "failingPerSec" : 0.0
+  }, {
+    "t" : 11.6,
+    "healthyPerSec" : 318332.0,
+    "failingPerSec" : 339602.0
+  }, {
+    "t" : 12.1,
+    "healthyPerSec" : 227516.0,
+    "failingPerSec" : 214000.0
+  }, {
+    "t" : 12.6,
+    "healthyPerSec" : 201424.0,
+    "failingPerSec" : 200000.0
+  }, {
+    "t" : 13.1,
+    "healthyPerSec" : 201414.0,
+    "failingPerSec" : 200000.0
+  }, {
+    "t" : 13.6,
+    "healthyPerSec" : 201924.0,
+    "failingPerSec" : 202000.0
+  }, {
+    "t" : 14.1,
+    "healthyPerSec" : 199018.0,
+    "failingPerSec" : 200000.0
+  }, {
+    "t" : 14.6,
+    "healthyPerSec" : 199446.0,
+    "failingPerSec" : 200000.0
+  }, {
+    "t" : 15.1,
+    "healthyPerSec" : 200354.0,
+    "failingPerSec" : 200000.0
+  }, {
+    "t" : 15.6,
+    "healthyPerSec" : 201296.0,
+    "failingPerSec" : 200000.0
+  }, {
+    "t" : 16.1,
+    "healthyPerSec" : 151628.0,
+    "failingPerSec" : 151636.0
+  } ],
+  "accounting" : {
+    "ingested" : 3200000,
+    "rejected_backpressure" : 0,
+    "filtered" : 0,
+    "routed" : 3200000,
+    "deliveries" : 6400000,
+    "published" : 5253113,
+    "dead_lettered_parse" : 0,
+    "dead_lettered_transform" : 0,
+    "dead_lettered_sink_overflow" : 1006887,
+    "dead_lettered_sink_write" : 140000,
+    "dead_letter_records_written" : 1146887
+  },
+  "ok" : true
+}

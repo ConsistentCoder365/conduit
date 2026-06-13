@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="viz" viewBox="0 0 720 380" width="720" height="380" role="img">
+<style>
+  .viz { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#8a8984; --grid:#e6e5e0;
+         --s1:#2a78d6; --s2:#eb6834; --band:#f0efea; }
+  @media (prefers-color-scheme: dark) {
+    .viz { --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#8f8e86; --grid:#2e2e2c;
+           --s1:#3987e5; --s2:#d95926; --band:#252523; }
+  }
+  .viz text { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  .t { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .st { fill: var(--ink2); font-size: 12px; }
+  .ax { fill: var(--ink2); font-size: 11px; }
+  .mu { fill: var(--muted); font-size: 11px; }
+  .lb { fill: var(--ink); font-size: 11px; font-weight: 600; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+</style>
+<rect width="720" height="380" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="28">Healthy sink throughput while another sink hangs</text>
+<text class="st" x="20" y="48">Both sinks get every event at 200,000/s. Fault sink hangs 5–11 s; healthy averaged 95% of normal.</text>
+<rect x="237.7" y="84" width="201.2" height="246.0" fill="var(--band)"/>
+<text class="mu" x="338.3" y="98" text-anchor="middle">outage</text>
+<line class="grid" x1="70.0" y1="330.0" x2="610.0" y2="330.0"/>
+<text class="ax" x="62" y="334.0" text-anchor="end">0</text>
+<line class="grid" x1="70.0" y1="268.5" x2="610.0" y2="268.5"/>
+<text class="ax" x="62" y="272.5" text-anchor="end">100k</text>
+<line class="grid" x1="70.0" y1="207.0" x2="610.0" y2="207.0"/>
+<text class="ax" x="62" y="211.0" text-anchor="end">200k</text>
+<line class="grid" x1="70.0" y1="145.5" x2="610.0" y2="145.5"/>
+<text class="ax" x="62" y="149.5" text-anchor="end">300k</text>
+<line class="grid" x1="70.0" y1="84.0" x2="610.0" y2="84.0"/>
+<text class="ax" x="62" y="88.0" text-anchor="end">400k</text>
+<text class="ax" x="70.0" y="348" text-anchor="middle">0s</text>
+<text class="ax" x="137.1" y="348" text-anchor="middle">2s</text>
+<text class="ax" x="204.2" y="348" text-anchor="middle">4s</text>
+<text class="ax" x="271.2" y="348" text-anchor="middle">6s</text>
+<text class="ax" x="338.3" y="348" text-anchor="middle">8s</text>
+<text class="ax" x="405.4" y="348" text-anchor="middle">10s</text>
+<text class="ax" x="472.5" y="348" text-anchor="middle">12s</text>
+<text class="ax" x="539.6" y="348" text-anchor="middle">14s</text>
+<text class="ax" x="606.6" y="348" text-anchor="middle">16s</text>
+<text class="ax" transform="translate(14,207) rotate(-90)" text-anchor="middle">acknowledged events / second</text>
+<line x1="70" y1="66" x2="88" y2="66" stroke="var(--s1)" stroke-width="2"/><text class="ax" x="94" y="70">healthy file sink</text>
+<line x1="220" y1="66" x2="238" y2="66" stroke="var(--s2)" stroke-width="2" stroke-dasharray="6 3"/><text class="ax" x="244" y="70">fault sink</text>
+<path d="M86.8,206.1L103.5,207.5L120.3,205.5L137.1,207.4L153.9,206.0L170.6,207.2L187.4,206.6L204.2,211.0L220.9,196.5L241.1,205.4L257.8,287.2L274.6,250.7L291.4,306.1L308.1,192.9L324.9,201.8L341.7,172.1L358.4,164.9L375.2,169.5L392.0,176.9L408.8,195.7L425.5,214.0L442.3,225.9L459.1,134.2L475.8,190.1L492.6,206.1L509.4,206.1L526.1,205.8L542.9,207.6L559.7,207.3L576.5,206.8L593.2,206.2L610.0,236.7" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linejoin="round"/>
+<text class="lb" x="618.0" y="232.7">healthy</text>
+<path d="M86.8,205.8L103.5,207.0L120.3,205.8L137.1,207.0L153.9,205.8L170.6,207.7L187.4,205.8L204.2,208.2L220.9,199.6L241.1,218.1L257.8,330.0L274.6,330.0L291.4,330.0L308.1,330.0L324.9,330.0L341.7,330.0L358.4,330.0L375.2,330.0L392.0,330.0L408.8,330.0L425.5,330.0L442.3,330.0L459.1,121.1L475.8,198.4L492.6,207.0L509.4,207.0L526.1,205.8L542.9,207.0L559.7,207.0L576.5,207.0L593.2,207.0L610.0,236.7" fill="none" stroke="var(--s2)" stroke-width="2" stroke-linejoin="round" stroke-dasharray="6 3"/>
+<text class="lb" x="618.0" y="248.7">fault</text>
+</svg>

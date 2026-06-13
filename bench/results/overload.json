@@ -1,0 +1,20 @@
+{
+  "scenario" : "overload",
+  "machine" : {
+    "cpu" : "Apple M1",
+    "cores" : 8,
+    "memoryGb" : 8,
+    "os" : "Mac OS X 26.1 aarch64",
+    "java" : "OpenJDK 64-Bit Server VM 21.0.13",
+    "maxHeapMb" : 1024
+  },
+  "seconds" : 60,
+  "maxHeapMb" : 1024,
+  "heapUsedMbPerSecond" : [ 103, 172, 308, 145, 395, 421, 432, 59, 348, 626, 83, 168, 393, 118, 406, 166, 518, 271, 638, 431, 209, 541, 330, 55, 126, 379, 531, 233, 524, 202, 431, 82, 391, 456, 201, 279, 363, 565, 538, 120, 296, 577, 572, 142, 210, 479, 644, 341, 237, 351, 538, 179, 399, 57, 284, 107, 317, 396, 223, 338 ],
+  "heapUsedMbMax" : 644,
+  "heapUsedMbFirstQuarterAvg" : 278.46666666666664,
+  "heapUsedMbLastQuarterAvg" : 326.0,
+  "eventsIngested" : 79646690,
+  "avgEventsPerSec" : 1327444.8333333333,
+  "ok" : true
+}
